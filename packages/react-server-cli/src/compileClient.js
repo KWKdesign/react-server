@@ -389,6 +389,14 @@ function writeClientBootstrapFile(outputDir, opts) {
 				window.__reactServerBase = path;
 			}
 		}
+
+
+		import injectTapEventPlugin from 'react-tap-event-plugin';
+		// Needed for onTouchTap in material-ui
+		// http://stackoverflow.com/a/34015469/988941
+		injectTapEventPlugin();
+
+
 		var reactServer = require("react-server");
 		window.rfBootstrap = function() {
 			reactServer.logging.setLevel('main',  ${JSON.stringify(opts.logLevel)});
